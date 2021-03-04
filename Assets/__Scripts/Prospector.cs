@@ -11,10 +11,12 @@ public class Prospector : MonoBehaviour {
 
 	[Header("Set in Inspector")]
 	public TextAsset			deckXML;
-
+	public TextAsset			layoutXML;
 
 	[Header("Set Dynamically")]
 	public Deck					deck;
+	public Layout				layout;
+	public List<CardProspector> drawPile;
 
 	void Awake(){
 		S = this;
@@ -26,6 +28,7 @@ public class Prospector : MonoBehaviour {
 
 		Deck.Shuffle(ref deck.cards);
 
+		/*
 		Card c;
 		// For all cards in deck, lay the cards evenly between:
 		// 		x = cNum % 13 * 3 : Horizontal layer will never exceed all 13 values
@@ -38,6 +41,24 @@ public class Prospector : MonoBehaviour {
 				0
 			);
 		}
+		*/
+
+		layout = GetComponent<Layout>();
+		layout.ReadLayout(layoutXML.text);
+
+		drawPile = ConvertListCardsToListCardProspectors(deck.cards);
 	}
 
+	List<CardProspector> ConvertListCardsToListCardProspectors(List<Card> lCD) {
+		List<CardProspector> lCP = new List<CardProspector>();
+		CardProspector tCP;
+
+		// Type cast each card to CardProspector
+		foreach (Card tCD in lCD) {
+			tCP = tCD as CardProspector;
+			lCP.Add(tCP);
+		}
+
+		return lCP;
+	}
 }
