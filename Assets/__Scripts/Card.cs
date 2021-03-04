@@ -22,6 +22,9 @@ public class Card : MonoBehaviour {
 		set { back.SetActive(!value); }
 	}
 
+	virtual public void OnMouseUpAsButton() {
+		print(name);
+	}
 
 	void Start () {
 		SetSortOrder(0);

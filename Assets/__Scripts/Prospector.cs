@@ -90,11 +90,65 @@ public class Prospector : MonoBehaviour {
 			cp.layoutID = tSD.id;
 			cp.slotDef = tSD;
 			cp.state = eCardState.tableau;
-			
+
 			cp.SetSortingLayerName(tSD.layerName);
 
 			// After initialization, add it
 			tableau.Add(cp);
+		}
+	}
+
+	void MoveToDiscard(CardProspector card) {
+		card.state = eCardState.discard;	
+		discardPile.Add(card);
+		card.transform.parent = layoutAnchor;
+
+		card.transform.localPosition = new Vector3(
+			layout.multiplier.x * layout.discardPile.x,
+			layout.multiplier.y * layout.discardPile.y,
+			-layout.discardPile.layer_id + 0.5f
+		);
+
+		card.faceUp = true;
+		card.SetSortingLayerName(layout.discardPile.layerName);
+		card.SetSortOrder(-100 + discardPile.Count);
+	}
+
+	void MoveToTarget(CardProspector card) {
+		if (target != null) { MoveToDiscard(target); }
+		
+		target = card;
+		card.state = eCardState.target;
+		card.transform.parent = layoutAnchor;
+		card.transform.localPosition = new Vector3(
+			layout.multiplier.x * layout.discardPile.x,
+			layout.multiplier.y * layout.discardPile.y,
+			-layout.discardPile.layer_id
+		);
+
+		card.faceUp = true;
+		
+		card.SetSortingLayerName(layout.discardPile.layerName);
+		card.SetSortOrder(0);
+	}
+
+	void UpdateDrawPile() {
+		CardProspector card;
+		for (int i = 0; i < drawPile.Count; i++) {
+			card = drawPile[i];
+			card.transform.parent = layoutAnchor;
+
+			Vector2 dpStagger = layout.drawPile.stagger;
+			card.transform.localPosition = new Vector3(
+				layout.multiplier.x * (layout.drawPile.x + i * dpStagger.x),
+				layout.multiplier.y * (layout.drawPile.y + i * dpStagger.y),
+				-layout.drawPile.layer_id + 0.1f * i
+			);
+
+			card.faceUp = false;
+			card.state = eCardState.drawpile;
+			card.SetSortingLayerName(layout.drawPile.layerName);
+			card.SetSortOrder(-10 * i);
 		}
 	}
 
