@@ -96,6 +96,26 @@ public class Prospector : MonoBehaviour {
 			// After initialization, add it
 			tableau.Add(cp);
 		}
+
+		MoveToTarget(Draw());
+		UpdateDrawPile();
+	}
+
+	public void CardClicked(CardProspector card) {
+		switch (card.state) {
+			case eCardState.target:
+				
+				break;
+			case eCardState.drawpile:
+				MoveToDiscard(target);
+				MoveToTarget(Draw());
+				UpdateDrawPile();
+				
+				break;
+			case eCardState.tableau:
+
+				break;
+		}
 	}
 
 	void MoveToDiscard(CardProspector card) {
