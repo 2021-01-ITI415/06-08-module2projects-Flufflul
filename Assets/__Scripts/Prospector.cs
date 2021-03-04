@@ -133,6 +133,7 @@ public class Prospector : MonoBehaviour {
 		switch (card.state) {
 			case eCardState.target:
 				
+
 				break;
 			case eCardState.drawpile:
 				MoveToDiscard(target);
@@ -153,6 +154,27 @@ public class Prospector : MonoBehaviour {
 
 				break;
 		}
+
+		CheckForGameOver();
+	}
+
+	void CheckForGameOver() {
+		if (tableau.Count == 0) { GameOver(true); return; } // If there are no more cards in the mine, end.
+		if (drawPile.Count > 0) { return; } // If there are still cards in the draw pile, stay.
+
+		// If there is still a possible play to be made, stay.
+		foreach (CardProspector card in tableau) {
+			if (AdjacentRank(card, target)) { return; }
+		}
+
+		GameOver(false);
+	}
+
+	void GameOver(bool done) {
+		if (done) { print("Game Over. You win!"); }
+		else { print("Game Over. Oops..."); }
+
+		SceneManager.LoadScene("__Prospector_Scene_0");
 	}
 
 	public bool AdjacentRank(CardProspector c0, CardProspector c1) {
