@@ -204,7 +204,7 @@ public class Deck : MonoBehaviour {
 			} // foreach Deco
 			
 			
-			//Add the pips
+			// Add the pips
 			foreach(Decorator pip in card.def.pips) {
 				tGO = Instantiate(prefabSprite) as GameObject;
 				tGO.transform.parent = cgo.transform; 
@@ -225,7 +225,7 @@ public class Deck : MonoBehaviour {
 				card.pipGOs.Add (tGO);
 			}
 			
-			//Handle face cards
+			// Handle face cards
 			if (card.def.face != "") {
 				tGO = Instantiate(prefabSprite) as GameObject;
 				tSR = tGO.GetComponent<SpriteRenderer>();
@@ -237,7 +237,8 @@ public class Deck : MonoBehaviour {
 				tGO.transform.localPosition = Vector3.zero;  // slap it smack dab in the middle
 				tGO.name = "face";
 			}
-
+			
+			// Add the back of card
 			tGO = Instantiate(prefabSprite) as GameObject;
 			tSR = tGO.GetComponent<SpriteRenderer>();
 			tSR.sprite = cardBack;
