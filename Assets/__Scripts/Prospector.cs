@@ -113,9 +113,27 @@ public class Prospector : MonoBehaviour {
 				
 				break;
 			case eCardState.tableau:
+				bool validMatch = true;
+
+				if (!card.faceUp) { validMatch = false; }
+				if (!AdjacentRank(card, target)) { validMatch = false; }
+				if(!validMatch) { return; }
+
+				tableau.Remove(card);
+				MoveToTarget(card);
 
 				break;
 		}
+	}
+
+	public bool AdjacentRank(CardProspector c0, CardProspector c1) {
+		if (!c0.faceUp || !c1.faceUp) { return false; }
+
+		if (Mathf.Abs(c0.rank - c1.rank) == 1) { return true; } // Adjacent numerics
+		if ((c0.rank == 1 && c1.rank == 13) 
+		|| (c0.rank == 13 && c1.rank == 1)) { return true; } // Edge cases (King / Ace)
+
+		return false;
 	}
 
 	void MoveToDiscard(CardProspector card) {
