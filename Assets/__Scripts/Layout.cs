@@ -29,7 +29,7 @@ public class Layout : MonoBehaviour
         xml = xmlR.xml["xml"][0];
 
         multiplier.x = float.Parse(xml["multiplier"][0].att("x"));
-        multiplier.y = float.Parse(xml["mulitplier"][0].att("y"));
+        multiplier.y = float.Parse(xml["multiplier"][0].att("y"));
 
         SlotDef tSD;
         PT_XMLHashList slotsX = xml["slot"];
