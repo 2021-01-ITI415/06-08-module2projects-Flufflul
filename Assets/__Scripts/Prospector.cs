@@ -18,7 +18,7 @@ public class Prospector : MonoBehaviour {
 								fsPosRun = new Vector2(0.5f, 0.75f),
 								fsPosMid2 = new Vector2(0.4f, 1f),
 								fsPosEnd = new Vector2(0.5f, 0.95f);
-
+	public float 				reloadDelay = 2f;
 	public Text 				gameOverText, roundResultText, highScoreText;
 
 	[Header("Set Dynamically")]
@@ -231,8 +231,13 @@ public class Prospector : MonoBehaviour {
 			FloatingScoreHandler(eScoreEvent.gameLoss);
 		}
 
+		Invoke("ReloadLevel", reloadDelay);
+	}
+
+	void ReloadLevel() {
 		SceneManager.LoadScene("__Prospector_Scene_0");
 	}
+
 
 	void FloatingScoreHandler(eScoreEvent evt) {
 		List<Vector2> fsPts;
