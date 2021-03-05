@@ -23,7 +23,7 @@ public class FloatingScore : MonoBehaviour
         get { return _score; }
         set { 
             _score = value; 
-            scoreString = _score.ToString("NO");
+            scoreString = _score.ToString("N0");
             GetComponent<Text>().text = scoreString;
         }
     }
@@ -58,7 +58,7 @@ public class FloatingScore : MonoBehaviour
         state = eFSState.pre;
     }
 
-    public void FSCallBack(FloatingScore fs) {
+    public void FSCallback(FloatingScore fs) {
         score += fs.score;
     }
 
