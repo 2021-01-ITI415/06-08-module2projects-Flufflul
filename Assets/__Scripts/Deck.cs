@@ -59,7 +59,6 @@ public class Deck : MonoBehaviour {
 		MakeCards();
 	}
 
-
 	// ReadDeck parses the XML file passed to it into Card Definitions
 	public void ReadDeck(string deckXMLText)
 	{
@@ -202,8 +201,7 @@ public class Deck : MonoBehaviour {
 				
 				card.decoGOs.Add (tGO);
 			} // foreach Deco
-			
-			
+
 			// Add the pips
 			foreach(Decorator pip in card.def.pips) {
 				tGO = Instantiate(prefabSprite) as GameObject;

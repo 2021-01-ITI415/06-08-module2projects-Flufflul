@@ -81,6 +81,5 @@ public class Decorator{
 public class CardDefinition{
 	public string	face;	//sprite to use for face cart
 	public int		rank;	// value from 1-13 (Ace-King)
-	public List<Decorator>	
-					pips = new List<Decorator>();  // Pips Used
+	public List<Decorator> pips = new List<Decorator>();  // Pips Used
 }
