@@ -34,16 +34,16 @@ public class ScoreManager : MonoBehaviour
         SCORE_FROM_PREV_ROUND = 0;
     }
 
-    public static void EVENT(eScoreEvent evt) {
+    public static void EVENT(eScoreEvent evt, bool isGold) {
         try {
-            S.Event(evt);
+            S.Event(evt, isGold);
         }
         catch(System.NullReferenceException nre) {
             Debug.LogError("ScoreManager:EVENT() called while S=null.\n" + nre);
         }
     }
 
-    void Event(eScoreEvent evt) {
+    void Event(eScoreEvent evt, bool isGold) {
         // Draw/Win/Loss equal handling
         switch(evt) {
             case eScoreEvent.draw:
@@ -56,7 +56,11 @@ public class ScoreManager : MonoBehaviour
                 break;
             case eScoreEvent.mine:
                 chain++;
-                scoreRun += chain;
+
+                Debug.Log("isGold: " + isGold);
+                if (isGold) { scoreRun += (2 * chain); }
+                else { scoreRun += chain; }
+                Debug.Log("Current score: " + scoreRun);
 
                 break;
         }

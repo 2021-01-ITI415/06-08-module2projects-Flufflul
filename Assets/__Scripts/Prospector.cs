@@ -180,8 +180,8 @@ public class Prospector : MonoBehaviour {
 				MoveToTarget(Draw());
 				UpdateDrawPile();
 
-				ScoreManager.EVENT(eScoreEvent.draw);
-				FloatingScoreHandler(eScoreEvent.draw);
+				ScoreManager.EVENT(eScoreEvent.draw, card.isGold);
+				FloatingScoreHandler(eScoreEvent.draw, card.isGold);
 				
 			break;
 			case eCardState.tableau:
@@ -195,8 +195,8 @@ public class Prospector : MonoBehaviour {
 				MoveToTarget(card);
 				SetTableauFaces();
 
-				ScoreManager.EVENT(eScoreEvent.mine);
-				FloatingScoreHandler(eScoreEvent.mine);
+				ScoreManager.EVENT(eScoreEvent.mine, card.isGold);
+				FloatingScoreHandler(eScoreEvent.mine, card.isGold);
 
 			break;
 		}
@@ -225,8 +225,8 @@ public class Prospector : MonoBehaviour {
 			roundResultText.text = "You won this round!\nRound Score: " + score;
 			ShowResultsUI(true);
 
-			ScoreManager.EVENT(eScoreEvent.gameWin);
-			FloatingScoreHandler(eScoreEvent.gameWin);
+			ScoreManager.EVENT(eScoreEvent.gameWin, false);
+			FloatingScoreHandler(eScoreEvent.gameWin, false);
 		}
 		else { 
 			gameOverText.text = "Game Over";
@@ -239,8 +239,8 @@ public class Prospector : MonoBehaviour {
 
 			ShowResultsUI(true);
 
-			ScoreManager.EVENT(eScoreEvent.gameLoss);
-			FloatingScoreHandler(eScoreEvent.gameLoss);
+			ScoreManager.EVENT(eScoreEvent.gameLoss, false);
+			FloatingScoreHandler(eScoreEvent.gameLoss, false);
 		}
 
 		Invoke("ReloadLevel", reloadDelay);
@@ -251,7 +251,7 @@ public class Prospector : MonoBehaviour {
 	}
 
 
-	void FloatingScoreHandler(eScoreEvent evt) {
+	void FloatingScoreHandler(eScoreEvent evt, bool isGold) {
 		List<Vector2> fsPts;
 		
 		switch(evt) {
@@ -282,7 +282,10 @@ public class Prospector : MonoBehaviour {
 				fsPts.Add(fsPosMid);
 				fsPts.Add(fsPosRun);
 
-				fs = Scoreboard.S.CreateFloatingScore(ScoreManager.CHAIN, fsPts);
+				int fsNum = ScoreManager.CHAIN;
+				if (isGold) { fsNum *= 2; }
+
+				fs = Scoreboard.S.CreateFloatingScore(fsNum, fsPts);
 				fs.fontSizes = new List<float>(new float[] {4, 50, 28});
 
 				if (fsRun == null) {
