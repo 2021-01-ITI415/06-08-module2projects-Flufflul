@@ -106,6 +106,18 @@ public class Prospector : MonoBehaviour {
 			// Draw a card 
 			cp = Draw();
 			cp.faceUp = tSD.faceUp;
+			
+			// 10% chance to be a gold card
+			float goldChance = Random.Range(0, 100);
+			if (goldChance < 10) {
+				SpriteRenderer front = cp.GetComponent<SpriteRenderer>();
+				front.sprite = deck.cardFrontGold;
+
+				SpriteRenderer back = cp.back.GetComponent<SpriteRenderer>();
+				back.sprite = deck.cardBackGold;
+
+				cp.isGold = true;
+			}
 
 			// Initialize its position relative to the tableau
 			cp.transform.parent = layoutAnchor;

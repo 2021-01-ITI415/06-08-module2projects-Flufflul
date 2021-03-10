@@ -16,6 +16,7 @@ public class CardProspector : Card
     public List<CardProspector> hiddenBy = new List<CardProspector>(); // Cascading list that determines the side of cards beneath it
     public int layoutID; // Matches card to tableau XML iff tableau
     public SlotDef slotDef; // Info from LayoutXML<slot>
+    public bool isGold = false;
 
     public override void OnMouseUpAsButton() {
         Prospector.S.CardClicked(this);
