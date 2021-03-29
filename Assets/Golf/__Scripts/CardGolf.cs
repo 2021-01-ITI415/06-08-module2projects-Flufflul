@@ -12,7 +12,7 @@ public enum eCardStateGolf {
 public class CardGolf : Card
 {
     [Header("Set Dynamically: CardGolf")]
-    public eCardStateGolf state = eCardState.drawpile; // Editing the game state
+    public eCardStateGolf state = eCardStateGolf.drawpile; // Editing the game state
     public List<CardGolf> hiddenBy = new List<CardGolf>(); // Cascading list that determines the side of cards beneath it
     public int layoutID; // Matches card to tableau XML iff tableau
     public SlotDefGolf slotDef; // Info from LayoutXML<slot>
