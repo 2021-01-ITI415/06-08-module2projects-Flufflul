@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 533773048226936170}
   - component: {fileID: 533773048226936168}
   - component: {fileID: 533773048226936171}
-  - component: {fileID: 888793475648302306}
+  - component: {fileID: 1884321632596852626}
   m_Layer: 5
   m_Name: PrefabFloatingScore
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 0
---- !u!114 &888793475648302306
+--- !u!114 &1884321632596852626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 533773048226936173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4aa1da39643552449078f5cf8def473, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c75e9ba5844a014d807b1f1e7780e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0

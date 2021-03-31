@@ -319,9 +319,9 @@ GameObject:
   - component: {fileID: 1018060298}
   - component: {fileID: 1018060297}
   - component: {fileID: 1018060295}
-  - component: {fileID: 1018060293}
   - component: {fileID: 1018060296}
   - component: {fileID: 1018060294}
+  - component: {fileID: 1018060293}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018060292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 993289f7dac9b7f4ba39f0c97a42ca72, type: 3}
+  m_Script: {fileID: 11500000, guid: 637ade64f496c4840b65c48cc01e479d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chain: 0
@@ -678,10 +678,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1301846326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a5654e5eef1df4da18de8d440565ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d391be763c346f438c9dcfec4e0bc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabFloatingScore: {fileID: 533773048226936173, guid: 6505535a09085b446a6c0c1b3e482813,
+  prefabFloatingScore: {fileID: 533773048226936173, guid: 9a171fd5ed7aaa6438e217a47ee9891f,
     type: 3}
   _score: 0
   _scoreString: 

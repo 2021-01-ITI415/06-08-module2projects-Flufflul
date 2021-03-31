@@ -18,10 +18,9 @@ public class CardGolf : Card
     public SlotDefGolf slotDef; // Info from LayoutXML<slot>
     // public bool isGold = false;
 
-    /*
+    
     public override void OnMouseUpAsButton() {
-        Prospector.S.CardClicked(this);
+        Golf.S.CardClicked(this);
         base.OnMouseUpAsButton(); // base = super, virtual ~ abstract
     }
-    */
 }
